@@ -1,0 +1,42 @@
+{
+  "name": "@asteres/signature",
+  "version": "0.0.1",
+  "description": "前后端通用接口签名：生成签名、组装签名字符、验证签名",
+  "main": "index.js",
+  "type": "module",
+  "types": "index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./index.js",
+      "types": "./index.d.ts"
+    }
+  },
+  "scripts": {
+    "check": "pnpm biome check --write index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DvShu/signature.git"
+  },
+  "files": [
+    "index.js",
+    "README.md"
+  ],
+  "keywords": [
+    "web",
+    "signature",
+    "node"
+  ],
+  "author": "Tenny <joel.shu@qq.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DvShu/signature/issues"
+  },
+  "homepage": "https://github.com/DvShu/signature#readme",
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4"
+  },
+  "dependencies": {
+    "ph-utils": "^0.15.0"
+  }
+}
