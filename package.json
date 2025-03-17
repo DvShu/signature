@@ -1,6 +1,6 @@
 {
   "name": "@asteres/signature",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "前后端通用接口签名：生成签名、组装签名字符、验证签名",
   "main": "index.js",
   "type": "module",
@@ -33,10 +33,7 @@
     "url": "https://github.com/DvShu/signature/issues"
   },
   "homepage": "https://github.com/DvShu/signature#readme",
-  "devDependencies": {
-    "@biomejs/biome": "^1.9.4"
-  },
-  "dependencies": {
+  "peerDependencies": {
     "ph-utils": "^0.15.0"
   }
 }
