@@ -117,7 +117,7 @@ export async function generateSignature(param) {
     signArr.push(b);
   }
   signArr.push(param.timestamp, param.nonce, param.secretKey);
-  const signStr = `${signArr.join("&")}\n`;
+  const signStr = `${signArr.join("\n")}\n`;
   const signature = await hmacHash(signStr, param.secretKey, "SHA-256", true);
   return {
     rawStr: signStr,
