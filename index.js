@@ -98,7 +98,7 @@ function parseSignatureItem(signatureStr, pairValue = false) {
 
 /**
  * @typedef {Object} VerifySignatureResult
- * @property {number} code - 是否验证通过, 0 - 验证通过, 1 - 签名错误, 2 - 时间戳错误, 3 - 签名算法错误
+ * @property {number} code - 是否验证通过, 0 - 验证通过, 1 - 签名错误, 2 - 时间戳错误, 3 - 签名算法错误, 4 - appid 错误
  * @property {string} message - 验证结果描述
  */
 
@@ -226,6 +226,12 @@ export async function verifySignatureHeader(param) {
   }
   const sigItem = parseSignatureItem(signature, opts.pairValue);
   const secretKey = await param.getSecretkeyByAppid(sigItem.appid);
+  if (!secretKey) {
+	return {
+	  code: 4,
+	  message: `appid is invalid: ${sigItem.appid}`
+	}
+  }
   // 验证签名
   return await verifySignature({
     appid: sigItem.appid,
