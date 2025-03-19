@@ -14,7 +14,7 @@ function queryStringify(query) {
     } else {
       q = query;
     }
-    return `?${q.toString()}`;
+    return `${q.size ? "?" : ""}${q.toString()}`;
   }
   return "";
 }
