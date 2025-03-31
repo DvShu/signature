@@ -14,7 +14,8 @@ function queryStringify(query) {
     } else {
       q = query;
     }
-    return `${q.size ? "?" : ""}${q.toString()}`;
+    const qstr = q.toString();
+    return `${qstr ? "?" : ""}${qstr}`;
   }
   return "";
 }
@@ -227,10 +228,10 @@ export async function verifySignatureHeader(param) {
   const sigItem = parseSignatureItem(signature, opts.pairValue);
   const secretKey = await param.getSecretkeyByAppid(sigItem.appid);
   if (!secretKey) {
-	return {
-	  code: 4,
-	  message: `appid is invalid: ${sigItem.appid}`
-	}
+    return {
+      code: 4,
+      message: `appid is invalid: ${sigItem.appid}`,
+    };
   }
   // 验证签名
   return await verifySignature({

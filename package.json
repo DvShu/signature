@@ -1,6 +1,6 @@
 {
   "name": "@asteres/signature",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "前后端通用接口签名：生成签名、组装签名字符、验证签名",
   "main": "index.js",
   "type": "module",
@@ -21,7 +21,7 @@
   "files": [
     "index.js",
     "README.md",
-	"index.d.ts"
+    "index.d.ts"
   ],
   "keywords": [
     "web",
