@@ -92,7 +92,7 @@ function parseSignatureItem(signatureStr, pairValue = false) {
 
 /**
  * @typedef {Object} VerifySignatureHeaderParam
- * @property {string} headerValue - 签名请求头值
+ * @property {string|undefined|null} [headerValue] - 签名请求头值
  * @property {boolean} [verifyHashName=true] - 是否包含签名算法名称, 可选，默认值为 true
  * @property {(appid: string) => Promise<string>} getSecretkeyByAppid - 根据 appid 获取 secretKey
  */
@@ -215,6 +215,12 @@ export async function verifySignatureHeader(param) {
     ...param,
   };
   let signature = opts.headerValue;
+  if (!signature) {
+    return {
+      code: 1,
+      message: "signature is empty",
+    };
+  }
   if (opts.withHashName) {
     let item = signature.split(" ");
     signature = item[1];

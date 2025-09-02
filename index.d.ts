@@ -71,7 +71,7 @@ type VerifySignatureHeaderParam = BaseVerifySignatureParam &
   BaseGenerateSignatureHeaderParam &
   BaseRequestParam & {
     /** 签名请求头值 */
-    headerValue: string;
+    headerValue?: string | undefined | null;
     /** 是否包含签名算法名称, 可选，默认值为 true */
     verifyHashName?: boolean;
     /** 根据 appid 获取 secretKey */
@@ -98,7 +98,7 @@ type GenerateSignatureHeaderParam = BaseGenerateSignatureHeaderParam &
  * @param param - 签名参数对象
  * @returns Promise<GenerateSignatureStrResult> 返回签名结果
  */
-export async function generateSignature(
+export function generateSignature(
   param: GenerateSignatureParam
 ): Promise<GenerateSignatureStrResult>;
 
@@ -118,7 +118,7 @@ export async function generateSignature(
  *
  * @returns 返回签名结果对象
  */
-export async function generateSignatureHeader(
+export function generateSignatureHeader(
   param: GenerateSignatureHeaderParam
 ): Promise<GenerateSignatureResult>;
 
@@ -126,7 +126,7 @@ export async function generateSignatureHeader(
  * 验证签名
  * @param param - 验签参数
  */
-export async function verifySignature(
+export function verifySignature(
   param: VerifySignatureParam
 ): Promise<VerifySignatureResult>;
 
@@ -134,6 +134,6 @@ export async function verifySignature(
  * 验证签名头
  * @param param - 验签名头参数
  */
-export async function verifySignatureHeader(
+export function verifySignatureHeader(
   param: VerifySignatureHeaderParam
 ): Promise<VerifySignatureResult>;
