@@ -191,7 +191,12 @@ export async function verifySignature(param) {
   }
   const signStr = await generateSignature(param);
   if (signStr.signature === param.signature) {
-    return { code: 0, message: "success" };
+    return {
+      code: 0,
+      message: "success",
+      appid: param.appid,
+      signature: signStr.signature,
+    };
   }
   return {
     code: 1,

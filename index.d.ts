@@ -83,6 +83,8 @@ type VerifySignatureResult = {
   code: number;
   /** 验证结果描述 */
   message: string;
+  appid: string;
+  signature: string;
 };
 
 type GenerateSignatureParam = BaseGenerateSignatureParam &
