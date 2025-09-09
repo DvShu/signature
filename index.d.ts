@@ -11,7 +11,7 @@ type BaseRequestParam = {
   /** 请求方法（可选，默认值为 GET） */
   method?: string;
   /** 请求体（可选，默认值为 null） */
-  body?: string | object;
+  body?: string | object | null | undefined;
   /** 查询参数对象（可选，默认值为 null） */
   query?: object | URLSearchParams;
 };
