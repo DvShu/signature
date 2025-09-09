@@ -55,6 +55,7 @@ function parseSignatureItem(signatureStr, pairValue = false) {
  * @typedef {Object} BaseGenerateSignatureParam
  * @property {string|number} timestamp - 时间戳, 精确到秒
  * @property {string} nonce - 随机字符串
+ * @property {boolean} [endsWithSecretKey=true] - 原始字符串末尾是否包含secretKey, 可选，默认值为 false
  */
 
 /**
@@ -117,7 +118,10 @@ export async function generateSignature(param) {
       typeof param.body === "string" ? param.body : JSON.stringify(param.body);
     signArr.push(b);
   }
-  signArr.push(param.timestamp, param.nonce, param.secretKey);
+  signArr.push(param.timestamp, param.nonce);
+  if (param.endsWithSecretKey) {
+    signArr.push(param.secretKey);
+  }
   const signStr = `${signArr.join("\n")}\n`;
   const signature = await hmacHash(signStr, param.secretKey, "SHA-256", true);
   return {

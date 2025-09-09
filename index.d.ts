@@ -21,6 +21,8 @@ type BaseGenerateSignatureParam = {
   timestamp: number | string;
   /** 随机字符串 */
   nonce: string;
+  /** 原始字符串末尾是否包含secretKey, 可选, 默认为: false */
+  endsWithSecretKey?: boolean;
 };
 
 type BaseGenerateSignatureHeaderParam = {
