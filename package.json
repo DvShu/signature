@@ -35,6 +35,6 @@
   },
   "homepage": "https://github.com/DvShu/signature#readme",
   "peerDependencies": {
-    "ph-utils": "^0.15.0"
+    "ph-utils": ">=0.15.0"
   }
 }
