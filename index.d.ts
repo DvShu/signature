@@ -94,6 +94,7 @@ type GenerateSignatureParam = BaseGenerateSignatureParam &
   BaseRequestParam;
 
 type GenerateSignatureHeaderParam = BaseGenerateSignatureHeaderParam &
+  BaseGenerateSignatureParam &
   BaseSinatureParam &
   BaseRequestParam;
 
