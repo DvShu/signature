@@ -41,6 +41,7 @@ function parseSignatureItem(signatureStr, pairValue = false) {
  * @typedef {Object} BaseSinatureParam
  * @property {string} appid - 应用 ID
  * @property {string} secretKey - 应用密钥
+ * @property {boolean} [endsWithSecretKey] - 原始字符串末尾是否包含secretKey, 可选, 默认为: false
  */
 
 /**
@@ -221,6 +222,7 @@ export async function verifySignatureHeader(param) {
     withHashName: true,
     pairValue: false,
     method: "GET",
+    endsWithSecretKey: false,
     ...param,
   };
   let signature = opts.headerValue;
@@ -261,5 +263,6 @@ export async function verifySignatureHeader(param) {
     signature: sigItem.signature,
     verifyTimestamp: opts.verifyTimestamp,
     timestampValidTime: opts.timestampValidTime,
+    endsWithSecretKey: opts.endsWithSecretKey,
   });
 }
