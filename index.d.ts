@@ -20,9 +20,9 @@ type BaseRequestParam = {
 
 type BaseGenerateSignatureParam = {
   /** 时间戳, 精确到秒 */
-  timestamp: number | string;
+  timestamp?: number | string;
   /** 随机字符串 */
-  nonce: string;
+  nonce?: string;
 };
 
 type BaseGenerateSignatureHeaderParam = {
@@ -93,10 +93,8 @@ type GenerateSignatureParam = BaseGenerateSignatureParam &
   BaseSinatureParam &
   BaseRequestParam;
 
-type GenerateSignatureHeaderParam = BaseGenerateSignatureHeaderParam &
-  BaseGenerateSignatureParam &
-  BaseSinatureParam &
-  BaseRequestParam;
+type GenerateSignatureHeaderParam = GenerateSignatureParam &
+  BaseGenerateSignatureHeaderParam;
 
 /**
  * 生成签名字符串

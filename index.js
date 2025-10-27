@@ -1,5 +1,6 @@
 import { hmacHash } from "ph-utils/crypto";
 import { random } from "ph-utils";
+import {} from "ph-utils/date";
 
 /**
  * 将查询参数对象或 URLSearchParams 转换为查询字符串
@@ -119,7 +120,9 @@ export async function generateSignature(param) {
       typeof param.body === "string" ? param.body : JSON.stringify(param.body);
     signArr.push(b);
   }
-  signArr.push(param.timestamp, param.nonce);
+  const timestamp = param.timestamp || `${Math.floor(Date.now() / 1000)}`;
+  const nonce = param.nonce || random(8);
+  signArr.push(timestamp, nonce);
   if (param.endsWithSecretKey) {
     signArr.push(param.secretKey);
   }
