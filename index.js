@@ -1,10 +1,9 @@
 import { hmacHash } from "ph-utils/crypto";
 import { random } from "ph-utils";
-import {} from "ph-utils/date";
 
 /**
  * 将查询参数对象或 URLSearchParams 转换为查询字符串
- * @param {Object|URLSearchParams} query - 查询参数对象或 URLSearchParams 实例
+ * @param {Object|URLSearchParams|sting} query - 查询参数对象或 URLSearchParams 实例
  * @returns {string} 返回格式化后的查询字符串,以'?'开头,如果 query 为空则返回空字符串
  */
 function queryStringify(query) {
@@ -50,7 +49,7 @@ function parseSignatureItem(signatureStr, pairValue = false) {
  * @property {string} url - 请求 URL
  * @property {string} [method="GET"] - 请求方法（可选，默认值为 GET）
  * @property {string|Object} [body=null] - 请求体（可选，默认值为 null）
- * @property {Object|URLSearchParams} [query=null] - 查询参数对象（可选，默认值为 null）
+ * @property {Object|URLSearchParams|string} [query=null] - 查询参数对象（可选，默认值为 null）
  */
 
 /**
