@@ -15,7 +15,7 @@ type BaseRequestParam = {
   /** 请求体（可选，默认值为 null） */
   body?: string | object | null | undefined;
   /** 查询参数对象（可选，默认值为 null） */
-  query?: object | URLSearchParams;
+  query?: object | URLSearchParams | string;
 };
 
 type BaseGenerateSignatureParam = {
