@@ -1,8 +1,4 @@
-import { hmacHash } from "ph-utils/crypto";
 import { HmacSHA256 } from "crypto-es";
-
-const a = await hmacHash("message", "secret");
-console.log(a);
 
 const b = HmacSHA256("message", "secret").toString();
 console.log(b);
