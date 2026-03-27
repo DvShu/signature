@@ -1,6 +1,6 @@
 {
   "name": "@asteres/signature",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "description": "前后端通用接口签名：生成签名、组装签名字符、验证签名",
   "keywords": [
     "node",
@@ -39,8 +39,7 @@
   },
   "devDependencies": {
     "oxfmt": "^0.42.0",
-    "oxlint": "^1.57.0",
-    "rolldown": "1.0.0-rc.12"
+    "oxlint": "^1.57.0"
   },
   "peerDependencies": {
     "ph-utils": ">=0.15.0"

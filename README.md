@@ -76,3 +76,23 @@ verifySignatureHeader({
   query: {}
 });
 ```
+
+> 如果运行在非安全环境下，无法使用 `window.crypto.subtle` 则需要安装 `crypto-es`; 然后引入到 `window.crypto.HmacSHA256`
+
+```bash
+pnpm add crypto-es
+```
+
+下面使用 `vite` 做构建工具时
+
+```javascript
+import { HmacSHA256 } from "crypto-es";
+
+// 假设 test 环境下不是 https 
+if (import.meta.env.MODE === "test") {
+  // @ts-ignore
+  window.crypto.HmacSHA256 = HmacSHA256;
+}
+
+// 然后打包时执行: vite build --mode test
+```

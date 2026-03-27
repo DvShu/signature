@@ -126,7 +126,14 @@ export async function generateSignature(param) {
     signArr.push(param.secretKey);
   }
   const signStr = `${signArr.join("\n")}\n`;
-  const signature = await hmacHash(signStr, param.secretKey, "SHA-256", true);
+  let signature = "";
+  if (globalThis.crypto.subtle) {
+    signature = await hmacHash(signStr, param.secretKey, "SHA-256", true);
+  } else if (globalThis.crypto.HmacSHA256) {
+    signature = globalThis.crypto.HmacSHA256(signStr, param.secretKey).toString();
+    signature = signature.toUpperCase();
+  }
+  
   return {
     rawStr: signStr,
     signature,
