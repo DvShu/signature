@@ -1,9 +1,8 @@
-import { hmacHash } from "ph-utils/crypto";
-import { random } from "ph-utils";
+import { random, hmacHash } from "ph-utils";
 
 /**
  * 将查询参数对象或 URLSearchParams 转换为查询字符串
- * @param {Object|URLSearchParams|sting} query - 查询参数对象或 URLSearchParams 实例
+ * @param {Object|URLSearchParams|string} query - 查询参数对象或 URLSearchParams 实例
  * @returns {string} 返回格式化后的查询字符串,以'?'开头,如果 query 为空则返回空字符串
  */
 function queryStringify(query) {
@@ -115,8 +114,7 @@ export async function generateSignature(param) {
   const url = `${param.url}${queryStringify(param.query)}`;
   const signArr = [param.appid, m, url];
   if (m !== "GET" && param.body && param.body !== "{}") {
-    const b =
-      typeof param.body === "string" ? param.body : JSON.stringify(param.body);
+    const b = typeof param.body === "string" ? param.body : JSON.stringify(param.body);
     signArr.push(b);
   }
   const timestamp = param.timestamp || `${Math.floor(Date.now() / 1000)}`;
@@ -133,7 +131,7 @@ export async function generateSignature(param) {
     signature = globalThis.crypto.HmacSHA256(signStr, param.secretKey).toString();
     signature = signature.toUpperCase();
   }
-  
+
   return {
     rawStr: signStr,
     signature,
@@ -194,10 +192,7 @@ export async function generateSignatureHeader(options) {
  */
 export async function verifySignature(param) {
   const nowTimestamp = Math.floor(Date.now() / 1000);
-  if (
-    param.verifyTimestamp &&
-    nowTimestamp - param.timestamp > param.timestampValidTime
-  ) {
+  if (param.verifyTimestamp && nowTimestamp - param.timestamp > param.timestampValidTime) {
     return {
       code: 2,
       message: `timestamp is invalid: ${param.timestamp} - ${nowTimestamp}`,

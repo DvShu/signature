@@ -1,6 +1,6 @@
 {
   "name": "@asteres/signature",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "前后端通用接口签名：生成签名、组装签名字符、验证签名",
   "keywords": [
     "node",
@@ -35,10 +35,10 @@
     "build": "rolldown lib.js --file bundle.js --minify"
   },
   "devDependencies": {
-    "oxfmt": "^0.42.0",
-    "oxlint": "^1.57.0"
+    "oxfmt": "^0.65.0",
+    "oxlint": "^1.80.0"
   },
   "peerDependencies": {
-    "ph-utils": ">=0.15.0"
+    "ph-utils": ">=1.1.0"
   }
 }
